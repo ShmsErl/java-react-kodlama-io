@@ -12,7 +12,7 @@ import java.util.List;
 public interface ProductService {
     List<GetAllProductResponse> getAll();
 
-    GetByProductResponse getByProduct(String product);
+    GetByProductResponse getByProduct(String productName);
 
     GetByProductResponse getByProduct(int id);
 
@@ -20,7 +20,7 @@ public interface ProductService {
 
     void updateProduct(UpdateProductRequest request);
 
-    void deleteProduct(int id);
+    void deleteProduct(int id) throws Exception;
 
 
 }
