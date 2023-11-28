@@ -40,4 +40,12 @@ public class GeneralExceptionHandler extends ResponseEntityExceptionHandler {
         errors.put("error", exception.getMessage());
         return new ResponseEntity<>(errors, HttpStatus.NOT_FOUND);
     }
+
+    @ExceptionHandler(ProductAlreadyExistsException.class)
+    public ResponseEntity<?> productAlreadyExistsException(ProductNotFoundException exception) {
+
+        Map<String, String> errors = new HashMap<>();
+        errors.put("error", exception.getMessage());
+        return new ResponseEntity<>(errors, HttpStatus.CONFLICT);
+    }
 }
