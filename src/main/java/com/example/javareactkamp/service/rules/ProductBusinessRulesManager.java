@@ -15,7 +15,7 @@ public class ProductBusinessRulesManager implements ProductBusinessRulesService 
 
     @Override
     public void IfCheckProductName(String productName) {
-        if(this.repository.findProductsBy(productName)){
+        if(this.repository.findByName(productName)){
 
           throw  new ProductAlreadyExistsException("Product already exists");
         }

@@ -45,7 +45,7 @@ public class ProductManager implements ProductService {
 
     @Override
     public GetByProductResponse getByProduct(String productName) {
-        Product product = this.productRepository.getProductsBy(productName).orElseThrow(() -> new ProductNotFoundException("Product not found"));
+        Product product = this.productRepository.getByName(productName).orElseThrow(() -> new ProductNotFoundException("Product not found"));
 
         return
                 this.mapperService.forResponse().map(product,GetByProductResponse.class);
