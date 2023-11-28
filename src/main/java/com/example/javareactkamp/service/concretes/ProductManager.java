@@ -11,6 +11,8 @@ import com.example.javareactkamp.repository.ProductRepository;
 import com.example.javareactkamp.service.abstracts.ProductService;
 import com.example.javareactkamp.service.rules.ProductBusinessRulesService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -26,7 +28,7 @@ public class ProductManager implements ProductService {
 
 
     @Override
-    public List<GetAllProductResponse> getAll() {
+    public  List<GetAllProductResponse> getAll() {
 
         List<Product> products = this.productRepository.findAll();
         List<GetAllProductResponse> responses = new ArrayList<>();
@@ -61,29 +63,34 @@ public class ProductManager implements ProductService {
     }
 
     @Override
-    public void createProduct(AddProductRequest request) {
+    public String createProduct(AddProductRequest request) {
         this.businessRulesService.IfCheckProductName(request.getName());
         Product product = this.mapperService.forRequest().map(request,Product.class);
 
         this.productRepository.save(product);
 
+        return "Transaction Successfull";
+
     }
 
     @Override
-    public void updateProduct(UpdateProductRequest request) {
+    public String updateProduct(UpdateProductRequest request) {
 
         Product product = this.mapperService.forRequest().map(request,Product.class);
 
         this.productRepository.save(product);
 
+        return "Transaction Successfull";
+
 
     }
 
     @Override
-    public void deleteProduct(int id) throws Exception {
+    public String deleteProduct(int id) throws Exception {
         this.productRepository.findById(id).orElseThrow(()-> new ProductNotFoundException("Product not found"));
 
         this.productRepository.deleteById(id);
 
+        return "Transaction Successfull";
     }
 }

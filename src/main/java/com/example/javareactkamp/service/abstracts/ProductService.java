@@ -16,11 +16,11 @@ public interface ProductService {
 
     GetByProductResponse getByProduct(int id);
 
-    void createProduct(AddProductRequest request);
+    String createProduct(AddProductRequest request);
 
-    void updateProduct(UpdateProductRequest request);
+    String  updateProduct(UpdateProductRequest request);
 
-    void deleteProduct(int id) throws Exception;
+    String deleteProduct(int id) throws Exception;
 
 
 }

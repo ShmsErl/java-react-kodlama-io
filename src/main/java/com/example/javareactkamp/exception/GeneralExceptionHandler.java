@@ -16,6 +16,9 @@ import java.util.Map;
 
 @RestControllerAdvice
 public class GeneralExceptionHandler extends ResponseEntityExceptionHandler {
+
+
+
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
                                                                   HttpHeaders headers,
@@ -30,7 +33,7 @@ public class GeneralExceptionHandler extends ResponseEntityExceptionHandler {
             errors.put(fieldName, errorMessage);
         });
 
-        return ResponseEntity.badRequest().body(errors);
+        return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST );
     }
 
     @ExceptionHandler(ProductNotFoundException.class)
