@@ -13,25 +13,26 @@ import lombok.NoArgsConstructor;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "product_id")
     private int id;
-    @Column(name = "name", nullable = false)
+    @Column(name = "category_id")
+    private int category;
+    @Column(name = "product_name")
     private String name;
-    @Column(name = "quantity_per_unit", nullable = false)
+    @Column(name = "quantity_per_unit")
     private String quantityPerUnit;
-    @Column(name = "unit_price", nullable = false)
+    @Column(name = "unit_price")
     private double unitPrice;
-    @Column(name = "unit_in_stock", nullable = false)
+    @Column(name = "units_in_stock")
     private int unitInStock;
-    @Column(name = "units_on_order", nullable = false)
+    @Column(name = "units_on_order")
     private int unitsOnOrder;
 
-    @Column(name = "reorder_level", nullable = false)
+    @Column(name = "reorder_level")
     private int reorderLevel;
-    @Column(name = "discontiuned", nullable = false)
-    private int discontiuned;
+    @Column(name = "discontinued")
+    private int discontinued;
 
-    @ManyToOne()
-    @JoinColumn(name = "category_id")
-    private Category category;
+
+
 }

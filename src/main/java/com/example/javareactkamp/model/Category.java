@@ -16,12 +16,13 @@ public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "category_id")
     private int id;
-    @Column(name = "name")
+    @Column(name = "category_name")
     private String name;
     @Column(name = "description")
     private String description;
-    @OneToMany(mappedBy = "product")
-    List<Product> products;
+    @Column(name = "picture")
+    private String picture;
+
 }
