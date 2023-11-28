@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
@@ -25,6 +26,7 @@ public class Product {
     private int category;
     @NotNull
     @NotEmpty
+
     @Column(name = "product_name")
     private String name;
     @NotNull
@@ -33,8 +35,10 @@ public class Product {
     private String quantityPerUnit;
     @NotNull
     @NotEmpty
+    @Min(value = 0)
     @Column(name = "unit_price")
     private double unitPrice;
+    @Min(value = 0)
     @Column(name = "units_in_stock")
     private int unitInStock;
     @Column(name = "units_on_order")
