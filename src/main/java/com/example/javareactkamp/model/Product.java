@@ -18,11 +18,9 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "product_id")
     private int id;
-
-    @NotNull
-    @NotEmpty
-    @Column(name = "category_id")
-    private int category;
+    @ManyToOne()
+    @JoinColumn(name = "category_id")
+    private Category category;
 
     @NotNull
     @NotEmpty

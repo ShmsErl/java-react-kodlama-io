@@ -27,17 +27,32 @@ public class ProductController {
 
         return new ResponseEntity<>(this.productService.getAll(), HttpStatus.OK);
     }
-    @GetMapping("/getbyname{productName}")
-    public ResponseEntity<GetByProductResponse> getByProduct(@RequestParam String productName){
+    @GetMapping("/getbyname")
+    public ResponseEntity<GetByProductResponse> getByProduct( String productName){
 
 
         return  new ResponseEntity<>(this.productService.getByProduct(productName), HttpStatus.OK);
     }
     @GetMapping("/getbyid{id}")
-    public ResponseEntity<GetByProductResponse> getByProduct(@RequestParam int id){
+    public ResponseEntity<GetByProductResponse> getByProduct(@PathVariable int id){
 
 
         return  new ResponseEntity<>(this.productService.getByProduct(id), HttpStatus.OK);
+    }
+        @GetMapping("/get")
+    public ResponseEntity<GetByProductResponse> getByNameAndCategoryId(  @RequestParam String productName, @RequestParam Integer id) {
+
+
+        return new ResponseEntity<>(this.productService.getByNameAndCategoryId(productName, id),HttpStatus.OK);
+
+    }
+
+    @GetMapping("/g")
+    public ResponseEntity<List<GetByProductResponse>> getByNameOrCategoryId(  @RequestParam String productName, @RequestParam Integer id) {
+
+
+        return new ResponseEntity<>(this.productService.getByNameOrCategoryId(productName, id),HttpStatus.OK);
+
     }
 
     @PostMapping("/add")
@@ -46,5 +61,11 @@ public class ProductController {
 
         return new ResponseEntity<String>(this.productService.createProduct(request), HttpStatus.CREATED);
 
+    }
+    @GetMapping("/nameIn")
+    public ResponseEntity< List<GetByProductResponse>> getByNameIn(@RequestParam List<String> productNames){
+
+
+        return new ResponseEntity<>(this.productService.getByNameIn(productNames), HttpStatus.OK);
     }
 }

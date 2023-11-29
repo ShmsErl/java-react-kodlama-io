@@ -12,7 +12,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class GetAllProductResponse {
-    private int category;
     private String name;
     private String quantityPerUnit;
     private double unitPrice;
@@ -20,4 +19,5 @@ public class GetAllProductResponse {
     private int unitsOnOrder;
     private int reorderLevel;
     private int discontinued;
+    private String categoryName;
 }

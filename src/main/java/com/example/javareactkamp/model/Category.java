@@ -1,10 +1,12 @@
 package com.example.javareactkamp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -24,5 +26,7 @@ public class Category {
     private String description;
     @Column(name = "picture")
     private String picture;
-
+    @JsonIgnore
+    @OneToMany(mappedBy = "category")
+    List<Product> products;
 }

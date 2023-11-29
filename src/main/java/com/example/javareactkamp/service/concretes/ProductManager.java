@@ -47,7 +47,7 @@ public class ProductManager implements ProductService {
 
     @Override
     public GetByProductResponse getByProduct(String productName) {
-        Product product = this.productRepository.getByName(productName).orElseThrow(() -> new ProductNotFoundException("Product not found"));
+        Product product = this.productRepository.findByName(productName).orElseThrow(() -> new ProductNotFoundException("Product not found"));
 
         return
                 this.mapperService.forResponse().map(product,GetByProductResponse.class);
@@ -92,5 +92,38 @@ public class ProductManager implements ProductService {
         this.productRepository.deleteById(id);
 
         return "Transaction Successfull";
+    }
+
+    @Override
+    public GetByProductResponse getByNameAndCategoryId(String productName, Integer id) {
+        Product product = this.productRepository.getByNameAndCategory_Id(productName, id).orElseThrow(()-> new ProductNotFoundException("Product not found"));;
+        return
+                this.mapperService.forResponse().map(product,GetByProductResponse.class);
+
+    }
+   public List<GetByProductResponse> getByNameOrCategoryId( String productName, Integer id){
+       List<Product> product = this.productRepository.getByNameOrCategory_Id(productName, id).orElseThrow(()-> new ProductNotFoundException("Product not found"));
+       List<GetByProductResponse> responses = new ArrayList<GetByProductResponse>();
+       for (Product  product1 : product) {
+         responses.add( this.mapperService.forResponse().map(product1,GetByProductResponse.class));
+
+       }
+
+
+
+        return  responses;
+   }
+
+    public List<GetByProductResponse> getByNameIn(List<String> productNames){
+        List<Product> product = this.productRepository.getByNameIn(productNames);
+        List<GetByProductResponse> responses = new ArrayList<>();
+
+        for (Product product1: product) {
+
+            responses.add( this.mapperService.forResponse().map(product1,GetByProductResponse.class));
+
+        }
+
+        return responses ;
     }
 }

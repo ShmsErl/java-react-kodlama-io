@@ -1,5 +1,6 @@
 package com.example.javareactkamp.dto.productDto;
 
+import com.example.javareactkamp.model.Category;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,12 +9,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class GetByProductResponse {
-    private int category;
+
     private String name;
+    private Category category;
     private String quantityPerUnit;
     private double unitPrice;
     private int unitInStock;
     private int unitsOnOrder;
     private int reorderLevel;
     private int discontinued;
+
 }
