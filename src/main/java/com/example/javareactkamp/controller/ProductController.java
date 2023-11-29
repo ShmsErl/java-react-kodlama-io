@@ -68,4 +68,10 @@ public class ProductController {
 
         return new ResponseEntity<>(this.productService.getByNameIn(productNames), HttpStatus.OK);
     }
+    @GetMapping("/namecontains")
+    public ResponseEntity< List<GetByProductResponse>> getByNameContains(@RequestParam String productName){
+
+
+        return new ResponseEntity<>(this.productService.getByNameContains(productName), HttpStatus.OK);
+    }
 }

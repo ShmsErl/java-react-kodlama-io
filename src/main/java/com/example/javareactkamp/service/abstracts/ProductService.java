@@ -20,13 +20,17 @@ public interface ProductService {
 
     String createProduct(AddProductRequest request);
 
-    String  updateProduct(UpdateProductRequest request);
+    String updateProduct(UpdateProductRequest request);
 
     String deleteProduct(int id) throws Exception;
 
-    GetByProductResponse getByNameAndCategoryId( String productName, Integer id);
-    List<GetByProductResponse> getByNameOrCategoryId( String productName, Integer id);
+    GetByProductResponse getByNameAndCategoryId(String productName, Integer id);
+
+    List<GetByProductResponse> getByNameOrCategoryId(String productName, Integer id);
+
     List<GetByProductResponse> getByNameIn(List<String> productNames);
+
+    List<GetByProductResponse> getByNameContains(String productName);
 
 
 }

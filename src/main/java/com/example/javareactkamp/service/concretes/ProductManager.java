@@ -126,4 +126,20 @@ public class ProductManager implements ProductService {
 
         return responses ;
     }
+
+    public List<GetByProductResponse> getByNameContains(String productName){
+
+        List<Product> product = this.productRepository.getByNameContains(productName);
+        List<GetByProductResponse> responses = new ArrayList<>();
+
+        for (Product product1: product) {
+
+            responses.add( this.mapperService.forResponse().map(product1,GetByProductResponse.class));
+
+        }
+
+        return responses ;
+
+
+    }
 }
