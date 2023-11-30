@@ -24,6 +24,21 @@ public class ProductController {
 
         return new ResponseEntity<>(this.productService.getAll(), HttpStatus.OK);
     }
+    @GetMapping("/getallpage")
+    public ResponseEntity< List<GetAllProductResponse>> getAll(int pageNo, int pageSize) {
+
+
+        return new ResponseEntity<>(this.productService.getAll(pageNo,pageSize),HttpStatus.OK);
+
+    }
+
+    @GetMapping("/getallsortpage")
+    public ResponseEntity< List<GetAllProductResponse>> getAll(int pageNo, int pageSize,String propertyName) {
+
+
+        return new ResponseEntity<>(this.productService.getAll(pageNo,pageSize,propertyName),HttpStatus.OK);
+
+    }
     @GetMapping("/getbyname")
     public ResponseEntity<GetByProductResponse> getByProduct( String productName){
 
