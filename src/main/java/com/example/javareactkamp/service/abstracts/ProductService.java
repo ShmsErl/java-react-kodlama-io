@@ -32,5 +32,7 @@ public interface ProductService {
 
     List<GetByProductResponse> getByNameContains(String productName);
 
+    List<GetByProductResponse> getByNameStartsWith(String productName);
+
 
 }

@@ -17,6 +17,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+
 @Service
 @AllArgsConstructor
 public class ProductManager implements ProductService {
@@ -140,6 +142,21 @@ public class ProductManager implements ProductService {
 
         return responses ;
 
+
+    }
+
+    public List<GetByProductResponse> getByNameStartsWith(String productName){
+
+        List<Product> product = this.productRepository.getByNameStartsWith(productName);
+        List<GetByProductResponse> responses = new ArrayList<>();
+
+        for (Product product1: product) {
+
+            responses.add( this.mapperService.forResponse().map(product1,GetByProductResponse.class));
+
+        }
+
+        return responses ;
 
     }
 }

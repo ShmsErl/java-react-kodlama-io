@@ -3,12 +3,9 @@ package com.example.javareactkamp.controller;
 import com.example.javareactkamp.dto.productDto.AddProductRequest;
 import com.example.javareactkamp.dto.productDto.GetAllProductResponse;
 import com.example.javareactkamp.dto.productDto.GetByProductResponse;
-import com.example.javareactkamp.model.Product;
-import com.example.javareactkamp.repository.ProductRepository;
 import com.example.javareactkamp.service.abstracts.ProductService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
-import org.apache.catalina.connector.Request;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -73,5 +70,13 @@ public class ProductController {
 
 
         return new ResponseEntity<>(this.productService.getByNameContains(productName), HttpStatus.OK);
+    }
+    @GetMapping("/getbynamestartwith")
+    public ResponseEntity <List<GetByProductResponse>> getByNameStartsWith(@RequestParam String productName){
+
+
+        return new ResponseEntity<>(this.productService.getByNameStartsWith(productName), HttpStatus.OK);
+
+
     }
 }

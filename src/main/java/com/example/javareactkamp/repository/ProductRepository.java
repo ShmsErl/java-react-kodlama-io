@@ -20,5 +20,7 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 
     List<Product> getByNameContains(String productName);
 
+    List<Product> getByNameStartsWith(String productName);
+
 
 }
