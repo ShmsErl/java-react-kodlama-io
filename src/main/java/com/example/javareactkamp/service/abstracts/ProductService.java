@@ -1,5 +1,6 @@
 package com.example.javareactkamp.service.abstracts;
 
+import com.example.javareactkamp.dto.ProductWithCategoryDto;
 import com.example.javareactkamp.dto.productDto.AddProductRequest;
 import com.example.javareactkamp.dto.productDto.GetAllProductResponse;
 import com.example.javareactkamp.dto.productDto.GetByProductResponse;
@@ -37,6 +38,8 @@ public interface ProductService {
     List<GetByProductResponse> getByNameContains(String productName);
 
     List<GetByProductResponse> getByNameStartsWith(String productName);
+
+    List<ProductWithCategoryDto> getProductWithCategoryDetails();
 
 
 }

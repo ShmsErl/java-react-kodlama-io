@@ -22,8 +22,7 @@ public class Product {
     @JoinColumn(name = "category_id")
     private Category category;
 
-    @NotNull
-    @NotEmpty
+
     @Column(name = "product_name")
     private String name;
 

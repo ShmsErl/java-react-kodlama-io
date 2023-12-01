@@ -1,5 +1,6 @@
 package com.example.javareactkamp.service.concretes;
 
+import com.example.javareactkamp.dto.ProductWithCategoryDto;
 import com.example.javareactkamp.dto.productDto.AddProductRequest;
 import com.example.javareactkamp.dto.productDto.GetAllProductResponse;
 import com.example.javareactkamp.dto.productDto.GetByProductResponse;
@@ -202,5 +203,11 @@ public class ProductManager implements ProductService {
 
         return responses;
 
+    }
+    @Override
+    public List<ProductWithCategoryDto> getProductWithCategoryDetails(){
+
+
+        return this.productRepository.getProductWithCategoryDetails();
     }
 }

@@ -1,5 +1,6 @@
 package com.example.javareactkamp.controller;
 
+import com.example.javareactkamp.dto.ProductWithCategoryDto;
 import com.example.javareactkamp.dto.productDto.AddProductRequest;
 import com.example.javareactkamp.dto.productDto.GetAllProductResponse;
 import com.example.javareactkamp.dto.productDto.GetByProductResponse;
@@ -93,5 +94,12 @@ public class ProductController {
         return new ResponseEntity<>(this.productService.getByNameStartsWith(productName), HttpStatus.OK);
 
 
+    }
+
+    @GetMapping("/getcategorywithproductdetails")
+    public ResponseEntity<List<ProductWithCategoryDto>> getProductWithCategoryDetails(){
+
+
+        return new ResponseEntity<>( this.productService.getProductWithCategoryDetails(),HttpStatus.OK);
     }
 }
