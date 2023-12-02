@@ -15,10 +15,22 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestControllerAdvice
-public class GeneralExceptionHandler extends ResponseEntityExceptionHandler {
+public class GeneralExceptionHandler {
 
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<Object> handleException(MethodArgumentNotValidException exception){
 
+        Map<String, String> errors = new HashMap<String, String>();
+        exception.getBindingResult().getFieldErrors().forEach(error -> {
+                    String fieldName =  error.getField();
+                    String errorMessage = error.getDefaultMessage();
 
+                    errors.put(fieldName, errorMessage);
+        });
+    return new  ResponseEntity<>(errors,HttpStatus.BAD_REQUEST);
+    }
+
+ /*
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
                                                                   HttpHeaders headers,
@@ -34,7 +46,7 @@ public class GeneralExceptionHandler extends ResponseEntityExceptionHandler {
         });
 
         return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST );
-    }
+    }*/
 
     @ExceptionHandler(ProductNotFoundException.class)
     public ResponseEntity<?> productNotFoundException(ProductNotFoundException exception) {
