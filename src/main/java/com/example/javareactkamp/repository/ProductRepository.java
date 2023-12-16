@@ -25,6 +25,11 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 
     List<Product> getByNameStartsWith(String productName);
 
+    //void removeByName(String productName);
+
+    //void putByName(String productName);
+
+
     @Query(value = "Select new com.example.javareactkamp.dto.ProductWithCategoryDto" +
             " (p.id,p.name,c.name) from  Category c Inner Join c.products p ")
     List<ProductWithCategoryDto> getProductWithCategoryDetails();

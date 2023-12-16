@@ -11,12 +11,13 @@ import lombok.NoArgsConstructor;
 public class GetByProductResponse {
 
     private String name;
-    private Category category;
     private String quantityPerUnit;
     private double unitPrice;
     private int unitInStock;
     private int unitsOnOrder;
     private int reorderLevel;
     private int discontinued;
+    private Category category;
+
 
 }

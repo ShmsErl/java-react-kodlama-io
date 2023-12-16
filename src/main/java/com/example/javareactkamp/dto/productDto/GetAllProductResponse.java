@@ -1,9 +1,5 @@
-package com.example.javareactkamp.dto.productDto;
+    package com.example.javareactkamp.dto.productDto;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,6 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class GetAllProductResponse {
+    private int id;
     private String name;
     private String quantityPerUnit;
     private double unitPrice;
